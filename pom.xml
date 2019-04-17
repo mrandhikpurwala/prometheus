@@ -166,6 +166,7 @@
   </dependencies>
 
   <build>
+    <sourceDirectory>main</sourceDirectory>
     <finalName>jpetstore</finalName>
     <pluginManagement>
       <plugins>

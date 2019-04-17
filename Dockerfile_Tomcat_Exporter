@@ -1,0 +1,10 @@
+FROM tomcat
+RUN mkdir -p ${CATALINA_HOME}/lib
+ADD https://search.maven.org/remotecontent?filepath=io/prometheus/simpleclient/0.6.0/simpleclient-0.6.0.jar ${CATALINA_HOME}/lib/simpleclient-0.6.0.jar
+ADD https://search.maven.org/remotecontent?filepath=io/prometheus/simpleclient_common/0.6.0/simpleclient_common-0.6.0.jar ${CATALINA_HOME}/lib/simpleclient_common-0.6.0.jar
+ADD https://search.maven.org/remotecontent?filepath=io/prometheus/simpleclient_servlet/0.6.0/simpleclient_servlet-0.6.0.jar ${CATALINA_HOME}/lib/simpleclient_servlet-0.6.0.jar
+ADD https://search.maven.org/remotecontent?filepath=io/prometheus/simpleclient_hotspot/0.6.0/simpleclient_hotspot-0.6.0.jar ${CATALINA_HOME}/lib/simpleclient_hotspot-0.6.0.jar
+ADD https://search.maven.org/remotecontent?filepath=nl/nlighten/tomcat_exporter_client/0.0.10/tomcat_exporter_client-0.0.10.jar ${CATALINA_HOME}/lib/tomcat_exporter_client-0.0.10.jar
+RUN mkdir -p ${CATALINA_HOME}/webapps
+ADD https://search.maven.org/remotecontent?filepath=nl/nlighten/tomcat_exporter_servlet/0.0.10/tomcat_exporter_servlet-0.0.10.war ${CATALINA_HOME}/webapps/metrics.war
+COPY --from=mrandhikpurwala/jpetstore /opt/workspace/target/jpetstore.war ${CATALINA_HOME}/webapps/

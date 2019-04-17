@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  rockstar:
+    image: mrandhikpurwala/tomcat_prom
+    ports:
+      - "8080:8080"
+  prometheus:
+    image: mrandhikpurwala/prometheus
+    ports:
+      - "9090:9090"
